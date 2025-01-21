@@ -21,7 +21,9 @@ const ItemSearcher = () => {
     setSearchString(searchString);
     const found = items?.filter((product) => {
       const fields = (
-        product?.productName + product?.productPrice
+        product?.productName +
+        product?.productDescription +
+        product?.productPrice
       )?.toLowerCase();
 
       if (fields?.includes(searchString)) return product;
@@ -65,7 +67,7 @@ const ItemSearcher = () => {
               filteredItems?.length + " found"
             )}
           </li>
-          {filteredItems?.length > 1 &&
+          {filteredItems?.length !== -1 &&
             filteredItems?.map((item, index) => (
               <li key={index}>
                 <ItemTile item={item} setIsFocused={setIsFocused} />
